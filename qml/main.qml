@@ -48,18 +48,19 @@ ApplicationWindow {
         }
 
         onClicked: {
-            let index = Math.round(Math.random() * (view.model.rowCount() - 0));
+            let index = Math.round(Math.random() * ((view.model.rowCount()-1) - 0));
             view.positionViewAtIndex(index,ListView.Contain)
 
             let role =  Math.round(Math.random() * (259 - 258) + 258);
 
             let value = 0;
             if(role === 259)
-                value = Math.random() * (100 - 0);
+                value = Number(Math.random() * (100 - 0)).toFixed(2);
             else
-                value = Math.random() * (2 - 0);
+                value = Math.round(Math.random() * (2 - 0));
 
             myModel.setDataByIndex(index,value,role)
+            console.log(index,value,role)
         }
     }
 
